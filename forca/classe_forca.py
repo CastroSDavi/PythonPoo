@@ -1,4 +1,3 @@
-
 class Forca:
 
     def __init__(self):

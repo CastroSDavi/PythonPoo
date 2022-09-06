@@ -1,8 +1,6 @@
 
-from PythonPoo.Banco.banco import Banco
-from PythonPoo.Banco.pessoa import Cliente
-
-
+from banco import Banco
+from pessoa import Cliente
 
 cliente1 = Cliente('Davi', 20)
 cliente1.adicionar_conta_corrente(101, 20, 1000, 100)

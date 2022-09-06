@@ -1,4 +1,5 @@
 class JogoDaVelha:
+    
     def __init__(self) -> None:
         self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.simbol_x = 'X'

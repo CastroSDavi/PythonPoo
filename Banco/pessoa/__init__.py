@@ -1,5 +1,4 @@
-from Banco.contas import ContaCorrente, ContaPoupanca
-
+from contas import ContaCorrente, ContaPoupanca
 
 class Pessoa:
     def __init__(self, nome: str, idade: int) -> None:
@@ -25,10 +24,10 @@ class Cliente(Pessoa):
     def conta(self):
         return self.__conta
 
-    def adicionar_conta_corrente(self, agencia: int, conta: int, saldo: float, limite=100) -> None:
+    def adicionar_conta_corrente(self, agencia: int, conta: int, saldo: float, limite=100):
         self.__conta = ContaCorrente(agencia, conta, saldo, limite)
         print('Conta corrente criada')
 
-    def adicionar_conta_poupanca(self, agencia: int, conta: int, saldo: float) -> None:
+    def adicionar_conta_poupanca(self, agencia: int, conta: int, saldo: float) :
         self.__conta = ContaPoupanca(agencia, conta, saldo)
         print('Conta poupança criada')
