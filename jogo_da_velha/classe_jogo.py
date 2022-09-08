@@ -1,9 +1,30 @@
+class Jogador:
+    def __init__(self, simbolo, pontuacao = 0) -> None:
+        self.__simbolo = simbolo
+        self.__pontuacao = pontuacao 
+    
+    @property
+    def simbolo(self):
+        return self.__simbolo
+    
+    @simbolo.setter
+    def simbolo(self, valor):
+        self.__simbolo = valor
+
+    @property
+    def pontuacao(self):
+        return self.__pontuacao
+    
+    @pontuacao.setter
+    def pontuacao(self,valor):
+        self.__pontuacao = valor
+
 class JogoDaVelha:
     
     def __init__(self) -> None:
         self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        self.simbol_x = 'X'
-        self.simbol_o = 'O'
+        self.jogador1 =  Jogador('X')
+        self.jogador2 = Jogador('O')
 
     def __repr__(self):
         return 'Jogo da velha, Autor: Davi Castro'
@@ -71,12 +92,15 @@ class JogoDaVelha:
 
         return False
 
+    def __definir_pontuacao(self, vencedor):
+        pass
+
     def jogar(self):
         self.__introducao()
         while True:
             self.__mostrar_tabuleiro()
-            self.__fazer_jogada(self.simbol_x)
-            if self.__verificar_vencedor(self.simbol_x):
+            self.__fazer_jogada(self.jogador1.simbolo)
+            if self.__verificar_vencedor(self.jogador1.simbolo):
                 self.__mostrar_tabuleiro()
                 break
             if ' ' not in self.pos:
@@ -84,10 +108,11 @@ class JogoDaVelha:
                 print('Empate')
                 break
             self.__mostrar_tabuleiro()
-            self.__fazer_jogada(self.simbol_o)
-            if self.__verificar_vencedor(self.simbol_o):
+            self.__fazer_jogada(self.jogador2.simbolo)
+            if self.__verificar_vencedor(self.jogador2.simbolo):
                 self.__mostrar_tabuleiro()
                 break
 
 
-JogoDaVelha().jogar()
+jogo = JogoDaVelha()
+jogo.jogar()
