@@ -55,39 +55,39 @@ class JogoDaVelha:
               f'\t----------\n'
               f'\t{self.pos[6]} | {self.pos[7]} | {self.pos[8]}')
 
-    def __fazer_jogada(self, simbolo: str) -> None:
+    def __fazer_jogada(self, jogador) -> None:
         while True:
             num = self.__validar_jogada('\nDigite uma posição entre 1 e 9: ')
             if self.pos[num] == ' ':
-                self.pos[num] = simbolo
+                self.pos[num] = jogador.simbolo
                 break
             else:
                 print('Posição inválida')
 
-    def __verificar_vencedor(self, simbolo: str) -> bool:
-        if self.pos[0] == simbolo and self.pos[1] == simbolo and self.pos[2] == simbolo:
-            print(f'{simbolo} é o vencedor')
+    def __verificar_vencedor(self, jogador) -> bool:
+        if self.pos[0] == jogador.simbolo and self.pos[1] == jogador.simbolo and self.pos[2] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[3] == simbolo and self.pos[4] == simbolo and self.pos[5] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[3] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[5] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[6] == simbolo and self.pos[7] == simbolo and self.pos[8] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[6] == jogador.simbolo and self.pos[7] == jogador.simbolo and self.pos[8] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[0] == simbolo and self.pos[3] == simbolo and self.pos[6] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[0] == jogador.simbolo and self.pos[3] == jogador.simbolo and self.pos[6] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[1] == simbolo and self.pos[4] == simbolo and self.pos[7] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[1] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[7] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[2] == simbolo and self.pos[5] == simbolo and self.pos[8] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[2] == jogador.simbolo and self.pos[5] == jogador.simbolo and self.pos[8] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[0] == simbolo and self.pos[4] == simbolo and self.pos[8] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[0] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[8] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
-        elif self.pos[2] == simbolo and self.pos[4] == simbolo and self.pos[6] == simbolo:
-            print(f'{simbolo} é o vencedor')
+        elif self.pos[2] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[6] == jogador.simbolo:
+            print(f'{jogador.simbolo} é o vencedor')
             return True
 
         return False
@@ -99,8 +99,8 @@ class JogoDaVelha:
         self.__introducao()
         while True:
             self.__mostrar_tabuleiro()
-            self.__fazer_jogada(self.jogador1.simbolo)
-            if self.__verificar_vencedor(self.jogador1.simbolo):
+            self.__fazer_jogada(self.jogador1)
+            if self.__verificar_vencedor(self.jogador1):
                 self.__mostrar_tabuleiro()
                 break
             if ' ' not in self.pos:
@@ -108,7 +108,8 @@ class JogoDaVelha:
                 print('Empate')
                 break
             self.__mostrar_tabuleiro()
-            self.__fazer_jogada(self.jogador2.simbolo)
-            if self.__verificar_vencedor(self.jogador2.simbolo):
+            self.__fazer_jogada(self.jogador2)
+            if self.__verificar_vencedor(self.jogador2):
                 self.__mostrar_tabuleiro()
                 break
+
