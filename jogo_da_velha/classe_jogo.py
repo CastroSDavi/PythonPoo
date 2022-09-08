@@ -1,5 +1,6 @@
 from classe_Jogador import Jogador
 
+
 class JogoDaVelha:
     
     def __init__(self) -> None:
@@ -13,7 +14,7 @@ class JogoDaVelha:
     @staticmethod
     def __introducao() -> None:
         print('-' * 30)
-        print(f'{"Jogo da Velha":-^30}')
+        print(f'{"Jogo da Velha": ^30}')
         print('-' * 30)
 
     @staticmethod
@@ -32,11 +33,13 @@ class JogoDaVelha:
     def __mostrar_tabuleiro(self) -> None:
         print('''
           {} | {} | {}
-        --------------
+        -------------
           {} | {} | {}
-        --------------
-          {} | {} | {} 
-        '''.format(self.pos[0], self.pos[1], self.pos[2], self.pos[3], self.pos[4], self.pos[5], self.pos[6],self.pos[7],self.pos[8]))
+        -------------
+          {} | {} | {}'''.format(
+            self.pos[0], self.pos[1], self.pos[2],
+            self.pos[3], self.pos[4], self.pos[5],
+            self.pos[6], self.pos[7], self.pos[8]))
 
     def __fazer_jogada(self, jogador) -> None:
         while True:
@@ -80,10 +83,10 @@ class JogoDaVelha:
             print(f'{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
-        elif ' '  not in self.pos:
+        elif ' ' not in self.pos:
             print('Empate')
             return True
-    
+
         return False
 
     def __aumentar_pontuacao(self, jogador):
@@ -94,8 +97,12 @@ class JogoDaVelha:
 ------------------------------
      {} - {}    |    {} - {}
 ------------------------------
-        '''.format(self.jogador1.simbolo, self.jogador1.pontuacao, self.jogador2.pontuacao, self.jogador2.simbolo))
-    
+        '''.format(
+            self.jogador1.simbolo,
+            self.jogador1.pontuacao,
+            self.jogador2.pontuacao,
+            self.jogador2.simbolo))
+
     def __restart(self):
         self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
@@ -116,5 +123,4 @@ class JogoDaVelha:
                 self.__mostrar_placar()
                 self.__mostrar_tabuleiro()
                 break
-    
-   
+            
