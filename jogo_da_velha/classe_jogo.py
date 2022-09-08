@@ -112,7 +112,3 @@ class JogoDaVelha:
             if self.__verificar_vencedor(self.jogador2.simbolo):
                 self.__mostrar_tabuleiro()
                 break
-
-
-jogo = JogoDaVelha()
-jogo.jogar()
