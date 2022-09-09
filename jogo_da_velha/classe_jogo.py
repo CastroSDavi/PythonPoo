@@ -52,35 +52,35 @@ class JogoDaVelha:
 
     def __verificar_vencedor(self, jogador) -> bool:
         if self.pos[0] == jogador.simbolo and self.pos[1] == jogador.simbolo and self.pos[2] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[3] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[5] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[6] == jogador.simbolo and self.pos[7] == jogador.simbolo and self.pos[8] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[0] == jogador.simbolo and self.pos[3] == jogador.simbolo and self.pos[6] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[1] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[7] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[2] == jogador.simbolo and self.pos[5] == jogador.simbolo and self.pos[8] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[0] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[8] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif self.pos[2] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[6] == jogador.simbolo:
-            print(f'{jogador.simbolo} é o vencedor')
+            print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
         elif ' ' not in self.pos:
@@ -89,7 +89,7 @@ class JogoDaVelha:
 
         return False
 
-    def __aumentar_pontuacao(self, jogador):
+    def __aumentar_pontuacao(self, jogador) -> None:
         jogador.pontuacao += 1
 
     def __mostrar_placar(self):
@@ -103,9 +103,28 @@ class JogoDaVelha:
             self.jogador2.pontuacao,
             self.jogador2.simbolo))
 
-    def __restart(self):
+    def __restart_variaveis(self) -> None:
         self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
+    def __restart_jogo(self):
+        while True:
+            restart = str(input("\nDeseja jogar novamente? ")).lower().strip()
+            if restart in ['s', 'sim']:
+                self.__restart_variaveis()
+                return True
+            elif restart in ['n', 'não']:
+                return False
+            else:
+                print('Digite [S/Sim] ou [N/Não]')
+
+    @staticmethod
+    def __mensagem_final():
+        print('''
+------------------------------
+          GAME OVER
+------------------------------        
+        ''')
+        
     def jogar(self):
         self.__introducao()
         while True:
@@ -115,12 +134,15 @@ class JogoDaVelha:
             if self.__verificar_vencedor(self.jogador1):
                 self.__mostrar_placar()
                 self.__mostrar_tabuleiro()
-                break
+                if not self.__restart_jogo():
+                    break
             self.__mostrar_placar()
             self.__mostrar_tabuleiro()
             self.__fazer_jogada(self.jogador2)
             if self.__verificar_vencedor(self.jogador2):
                 self.__mostrar_placar()
                 self.__mostrar_tabuleiro()
-                break
-            
+                if not self.__restart_jogo():
+                    break
+
+        self.__mensagem_final()
