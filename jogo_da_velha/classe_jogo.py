@@ -51,35 +51,14 @@ class JogoDaVelha:
                 print('Posição inválida')
 
     def __verificar_vencedor(self, jogador) -> bool:
-        if self.pos[0] == jogador.simbolo and self.pos[1] == jogador.simbolo and self.pos[2] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[3] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[5] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[6] == jogador.simbolo and self.pos[7] == jogador.simbolo and self.pos[8] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[0] == jogador.simbolo and self.pos[3] == jogador.simbolo and self.pos[6] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[1] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[7] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[2] == jogador.simbolo and self.pos[5] == jogador.simbolo and self.pos[8] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[0] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[8] == jogador.simbolo:
-            print(f'\n{jogador.simbolo} é o vencedor')
-            self.__aumentar_pontuacao(jogador)
-            return True
-        elif self.pos[2] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[6] == jogador.simbolo:
+        if (self.pos[0] == jogador.simbolo and self.pos[1] == jogador.simbolo and self.pos[2] == jogador.simbolo) \
+        or (self.pos[3] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[5] == jogador.simbolo) \
+        or (self.pos[6] == jogador.simbolo and self.pos[7] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
+        or (self.pos[0] == jogador.simbolo and self.pos[3] == jogador.simbolo and self.pos[6] == jogador.simbolo) \
+        or (self.pos[1] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[7] == jogador.simbolo) \
+        or (self.pos[2] == jogador.simbolo and self.pos[5] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
+        or (self.pos[0] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
+        or (self.pos[2] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[6] == jogador.simbolo):
             print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
@@ -106,7 +85,7 @@ class JogoDaVelha:
     def __restart_variaveis(self) -> None:
         self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-    def __restart_jogo(self):
+    def __restart_jogo(self) -> bool:
         while True:
             restart = str(input("\nDeseja jogar novamente? ")).lower().strip()
             if restart in ['s', 'sim']:
@@ -118,7 +97,7 @@ class JogoDaVelha:
                 print('Digite [S/Sim] ou [N/Não]')
 
     @staticmethod
-    def __mensagem_final():
+    def __mensagem_final() -> None:
         print('''
 ------------------------------
           GAME OVER
