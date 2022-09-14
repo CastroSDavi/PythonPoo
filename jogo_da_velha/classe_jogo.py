@@ -32,7 +32,10 @@ class JogoDaVelha:
                 return num
     @staticmethod
     def __limpar_tela():
-        os.system('cls')
+        if os.name == 'nt':
+            os.system('cls')
+        else:
+            os.system('clear')
 
     def __mostrar_tabuleiro(self) -> None:
         print('''
