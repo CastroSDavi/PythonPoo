@@ -1,4 +1,5 @@
 from classe_Jogador import Jogador
+import os
 
 
 class JogoDaVelha:
@@ -29,6 +30,9 @@ class JogoDaVelha:
                 print('Digite um número inteiro')
             else:
                 return num
+    @staticmethod
+    def __limpar_tela():
+        os.system('cls')
 
     def __mostrar_tabuleiro(self) -> None:
         print('''
@@ -46,6 +50,7 @@ class JogoDaVelha:
             num = self.__validar_jogada('\nDigite uma posição entre 1 e 9: ')
             if self.pos[num] == ' ':
                 self.pos[num] = jogador.simbolo
+                self.__limpar_tela()
                 break
             else:
                 print('Posição inválida')
@@ -84,6 +89,7 @@ class JogoDaVelha:
 
     def __restart_variaveis(self) -> None:
         self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.__limpar_tela()
 
     def __restart_jogo(self) -> bool:
         while True:
