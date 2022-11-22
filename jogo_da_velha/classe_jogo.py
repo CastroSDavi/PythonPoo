@@ -5,11 +5,11 @@ import os
 class JogoDaVelha:
     
     def __init__(self) -> None:
-        self.pos = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.pos:list = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.jogador1 =  Jogador('X')
         self.jogador2 = Jogador('O')
 
-    def __repr__(self):
+    def __repr__(self) -> str: 
         return 'Jogo da velha, Autor: Davi Castro'
 
     @staticmethod
@@ -79,7 +79,7 @@ class JogoDaVelha:
     def __aumentar_pontuacao(self, jogador) -> None:
         jogador.pontuacao += 1
 
-    def __mostrar_placar(self):
+    def __mostrar_placar(self) -> None:
         print('''
 ------------------------------
      {} - {}    |    {} - {}
@@ -113,7 +113,7 @@ class JogoDaVelha:
 ------------------------------        
         ''')
         
-    def jogar(self):
+    def jogar(self) -> None: 
         self.__introducao()
         while True:
             self.__mostrar_placar()
