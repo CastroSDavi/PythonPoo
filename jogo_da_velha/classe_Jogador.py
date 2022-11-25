@@ -1,5 +1,5 @@
 class Jogador:
-    def __init__(self, simbolo, pontuacao = 0) -> None:
+    def __init__(self, simbolo, pontuacao=0) -> None:
         self.__simbolo = simbolo
         self.__pontuacao = pontuacao 
     
@@ -16,5 +16,5 @@ class Jogador:
         return self.__pontuacao
     
     @pontuacao.setter
-    def pontuacao(self,valor):
+    def pontuacao(self, valor):
         self.__pontuacao = valor

@@ -5,8 +5,8 @@ import os
 class JogoDaVelha:
     
     def __init__(self) -> None:
-        self.pos:list = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        self.jogador1 =  Jogador('X')
+        self.pos: list = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.jogador1 = Jogador('X')
         self.jogador2 = Jogador('O')
 
     def __repr__(self) -> str: 
@@ -30,6 +30,7 @@ class JogoDaVelha:
                 print('Digite um número inteiro')
             else:
                 return num
+
     @staticmethod
     def __limpar_tela():
         if os.name == 'nt':
