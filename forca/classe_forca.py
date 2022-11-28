@@ -1,6 +1,6 @@
 class Forca:
 
-    def __init__(self, palavra: str, erros: int ):
+    def __init__(self, palavra: str, erros: int):
         self.palavra = palavra
         self.erros = erros
         self.palavra_apoio = list('-' for _ in range(len(self.palavra)))
@@ -8,20 +8,22 @@ class Forca:
     def __escolher_letra(self):
         while True:
             letra_escolhida = str(input('Digite uma letra: ')).lower()
-            if (self.__verificar_tamanho_da_letra(letra_escolhida) and self.__verificar_tipo(letra_escolhida)):
+            if self.__verificar_tamanho_da_letra(letra_escolhida) and self.__verificar_tipo(letra_escolhida):
                 return letra_escolhida
-            
+
             print('Digite novamente')
-    
+
     def __verificar_tamanho_da_letra(self, letra_escolhida):
         tamanho = int(len(letra_escolhida))
         if tamanho > 1:
+            print('Digite apenas uma letra')
             return False
-        
+
         return True
 
     def __verificar_tipo(self, letra_escolhida):
         if not letra_escolhida.isalpha():
+            print('Digite uma letra')
             return False
 
         return True
@@ -35,13 +37,21 @@ class Forca:
         else:
             self.erros -= 1
 
+    def __verificar_fim_de_jogo(self):
+        self.__procurar_letra(self.__escolher_letra())
+        if not '-' in self.palavra_apoio:
+            print('Parabéns, você ganhou')
+            return True
+
+        elif self.erros == 0:
+            print('Que pena, você perdeu')
+            return True
+
+        return False
+
     def jogar(self):
         print(''.join(self.palavra_apoio))
         while True:
             self.__procurar_letra(self.__escolher_letra())
-            if not '-' in self.palavra_apoio:
-                print('Parabéns, você ganhou')
-                break
-            elif self.erros == 0:
-                print('Que pena, você perdeu')
+            if self.__verificar_fim_de_jogo():
                 break
