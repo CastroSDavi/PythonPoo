@@ -1,6 +1,6 @@
 class Forca:
 
-    def __init__(self, palavra: str, erros: int):
+    def __init__(self, palavra: str, erros: int) -> None:
         self.palavra = palavra
         self.erros = erros
         self.palavra_apoio:list[str] = list('-' for _ in range(len(self.palavra)))
