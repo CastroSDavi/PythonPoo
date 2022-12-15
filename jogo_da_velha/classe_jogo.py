@@ -5,21 +5,23 @@ import os
 class JogoDaVelha:
     
     def __init__(self) -> None:
-        self.pos: list = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.pos: list = [
+            ' ', ' ', ' ',
+            ' ', ' ', ' ',
+            ' ', ' ', ' '
+            ]
         self.jogador1 = Jogador('X')
         self.jogador2 = Jogador('O')
 
     def __repr__(self) -> str: 
         return 'Jogo da velha, Autor: Davi Castro'
 
-    @staticmethod
-    def __introducao() -> None:
+    def __introducao(self) -> None:
         print('-' * 30)
         print(f'{"Jogo da Velha": ^30}')
         print('-' * 30)
 
-    @staticmethod
-    def __validar_jogada(msg: str) -> int:
+    def __validar_jogada(self, msg: str) -> int:
         while True:
             try:
                 num = int(input(msg)) - 1
@@ -31,8 +33,7 @@ class JogoDaVelha:
             else:
                 return num
 
-    @staticmethod
-    def __limpar_tela():
+    def __limpar_tela(self):
         if os.name == 'nt':
             os.system('cls')
         else:
@@ -106,8 +107,7 @@ class JogoDaVelha:
             else:
                 print('Digite [S/Sim] ou [N/Não]')
 
-    @staticmethod
-    def __mensagem_final() -> None:
+    def __mensagem_final(self) -> None:
         print('''
 ------------------------------
           GAME OVER
