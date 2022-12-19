@@ -33,12 +33,10 @@ class Forca:
             for contador, letra in enumerate(self.palavra):
                 if letra_escolhida == letra:
                     self.palavra_apoio[contador] = letra
-                    print(''.join(self.palavra_apoio))
         else:
             self.erros -= 1
 
     def __verificar_fim_de_jogo(self) -> bool:
-        self.__procurar_letra(self.__escolher_letra())
         if not '-' in self.palavra_apoio:
             print('Parabéns, você ganhou')
             return True
@@ -52,6 +50,7 @@ class Forca:
     def jogar(self) -> None:
         print(''.join(self.palavra_apoio))
         while True:
-            self.__procurar_letra(self.__escolher_letra())
             if self.__verificar_fim_de_jogo():
                 break
+            self.__procurar_letra(self.__escolher_letra())
+            print(''.join(self.palavra_apoio))
