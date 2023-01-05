@@ -1,19 +1,20 @@
-from classe_Jogador import Jogador
 import os
+
+from classe_Jogador import Jogador
 
 
 class JogoDaVelha:
-    
+
     def __init__(self) -> None:
         self.pos: list = [
             ' ', ' ', ' ',
             ' ', ' ', ' ',
             ' ', ' ', ' '
-            ]
+        ]
         self.jogador1 = Jogador('X')
         self.jogador2 = Jogador('O')
 
-    def __repr__(self) -> str: 
+    def __repr__(self) -> str:
         return 'Jogo da velha, Autor: Davi Castro'
 
     def __introducao(self) -> None:
@@ -62,13 +63,13 @@ class JogoDaVelha:
 
     def __verificar_vencedor(self, jogador) -> bool:
         if (self.pos[0] == jogador.simbolo and self.pos[1] == jogador.simbolo and self.pos[2] == jogador.simbolo) \
-        or (self.pos[3] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[5] == jogador.simbolo) \
-        or (self.pos[6] == jogador.simbolo and self.pos[7] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
-        or (self.pos[0] == jogador.simbolo and self.pos[3] == jogador.simbolo and self.pos[6] == jogador.simbolo) \
-        or (self.pos[1] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[7] == jogador.simbolo) \
-        or (self.pos[2] == jogador.simbolo and self.pos[5] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
-        or (self.pos[0] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
-        or (self.pos[2] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[6] == jogador.simbolo):
+                or (self.pos[3] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[5] == jogador.simbolo) \
+                or (self.pos[6] == jogador.simbolo and self.pos[7] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
+                or (self.pos[0] == jogador.simbolo and self.pos[3] == jogador.simbolo and self.pos[6] == jogador.simbolo) \
+                or (self.pos[1] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[7] == jogador.simbolo) \
+                or (self.pos[2] == jogador.simbolo and self.pos[5] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
+                or (self.pos[0] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[8] == jogador.simbolo) \
+                or (self.pos[2] == jogador.simbolo and self.pos[4] == jogador.simbolo and self.pos[6] == jogador.simbolo):
             print(f'\n{jogador.simbolo} é o vencedor')
             self.__aumentar_pontuacao(jogador)
             return True
@@ -113,8 +114,8 @@ class JogoDaVelha:
           GAME OVER
 ------------------------------        
         ''')
-        
-    def jogar(self) -> None: 
+
+    def jogar(self) -> None:
         self.__introducao()
         while True:
             self.__mostrar_placar()
